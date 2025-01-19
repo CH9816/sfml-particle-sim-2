@@ -75,7 +75,7 @@ public:
 
 			fpoint velMagSq = obj.vel.magsq();
 			fpoint mag = sqrt(velMagSq);
-			const Vector axi = obj.vel / (mag == 0 ? .1 : mag) ;
+			const Vector axi = obj.vel / (mag == 0 ? .01f : mag) ;
 			obj.applyForce(-axi * velMagSq * QUADRATIC_RESISTANCE);
 			
 			obj.vel *= (1 - (LINEAR_RESISTANCE_OVER_DT) * physicsEngine.dt);
@@ -180,6 +180,31 @@ public:
 
 
 
+	void nlogn_ParticleForce() {
+		auto leafList = tree.getLeafList();
+		
+		for (int i = 0; i < objectCount; i++) {
+			Ball& obj = objects[i];
+
+			vectorList<vectorList<Ball*>*>
+				BallPtrListList = tree.getAllWithinRange(obj, leafList);
+
+			for (vectorList<Ball*>*& listPtr : BallPtrListList) {
+				for (Ball* objPtr : *listPtr) {
+					Ball& otherObj = *objPtr;
+
+					if (objPtr != &objects[i])
+						resolveInteraction(obj, otherObj);
+
+				}
+			}
+
+
+		}
+	}
+
+
+
 
 	
 
@@ -191,17 +216,22 @@ public:
 
 		//doCollisions();
 
-		buildQtree();
+		int i = 0;
 
 		timer.start();
-		n2_particleForce();
-		timeList[0] = "particle force time = " + string(timer.get(-3)) + "ms";
+		buildQtree();
+		timeList[i++] = "tree build time = " + string(timer.get());
+
+		timer.start();
+		//n2_particleForce();
+		nlogn_ParticleForce();
+		timeList[i++] = "particle force time = " + string(timer.get(-3)) + "ms";
 
 		dampenMotion();
 
 		timer.start();
 		physicsEngine.integrate(objects, objectCount);
-		timeList[1] = "integration time = " + string(timer.get(-3)) + "ms";
+		timeList[i++] = "integration time = " + string(timer.get(-3)) + "ms";
 
 		timer.start();
 		//for (Ball& obj : objects) {
@@ -220,7 +250,7 @@ public:
 
 			obj.update();
 		}
-		timeList[2] = "object update time = " + string(timer.get(-3)) + "ms";
+		timeList[i++] = "object update time = " + string(timer.get(-3)) + "ms";
 
 
 
@@ -228,11 +258,13 @@ public:
 
 
 
-		timeList[3] =
+		timeList[i++] =
 			"total simulate time = " + string(totalTimer.get(-3)) +
 			"ms, possible tps = " + string(1.f / totalTimer.get())
 			;
 
+		timeList[i++] =
+			"n = " + string(objectCount);
 	}
 
 };

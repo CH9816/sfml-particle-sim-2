@@ -366,6 +366,8 @@ public:
 
 		drawQtree();
 
+		if (objCount > 0)
+			tree.renderExtra(win, objList[0]);
 
 	}
 };

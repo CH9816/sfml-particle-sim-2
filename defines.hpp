@@ -12,8 +12,8 @@ typedef std::atomic_bool abool;
 #define string(x) std::to_string(x)
 #define ref(x) std::ref(x)
 
-#define scrh 1080
-#define scrw 1920
+#define scrh 720
+#define scrw 1280
 #define WORLD_SIZE 2000
 #define FPS 60
 #define TPS 200

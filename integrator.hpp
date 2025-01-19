@@ -6,7 +6,6 @@
 
 
 
-
 class Integrator {
 public:
 	fpoint dt;
@@ -71,6 +70,12 @@ public:
 			this->minSize = minSize;
 		};
 
+		void clear() {
+			this->data.clear();
+			this->objPtrList.clear();
+			this->data.reserve(4);
+		}
+
 		qTree(int parentDepth, const Vector& pos, fpoint minSize) {
 			this->depth = parentDepth + 1;
 			this->pos = pos.copy();
@@ -79,50 +84,13 @@ public:
 			clear();
 		}
 
-		bool contains(const Ball& obj) {
-			return
-				obj.pos.x > pos.x &&
-				obj.pos.x < pos.x + getSize() &&
-
-				obj.pos.y > pos.y &&
-				obj.pos.y < pos.y + getSize()
-				;
+		fpoint getSize() const {
+			return WORLD_SIZE / (this->depth == 0 ? 1 : pow(2, depth));
 		}
 
-		// if it were to be subivided again would it be too small?
-		bool isMinSize() const {
-			return (getSize() / 2.f < minSize);
+		bool isLeaf() const {
+			return data.size() == 0;
 		}
-
-		bool addObj(Ball* objPtr) {
-
-			
-			if (not this->contains(*objPtr))
-				return false;
-
-
-			if (not isLeaf()) {
-
-			}
-
-			//if (objPtrList.size() < maxObjCountBeforeSubdivide or isMinSize()) {
-			//	objPtrList.emplace_back(objPtr);
-			//	return true;
-			//}
-			//else {
-			//	if (isLeaf())
-			//		subDivide();
-
-			//	for (qTree& tree : data) {
-			//		if (tree.addObj(objPtr))
-			//			return true;
-			//	}
-			//	
-			//}
-
-			//return false;
-		}
-
 
 		sf::Vector2f getPosVector(int i) const {
 
@@ -138,20 +106,6 @@ public:
 			case 3:
 				return vf(pos + Vector(halfEdgeLength, halfEdgeLength));
 			};
-		}
-
-		fpoint getSize() const {
-			return WORLD_SIZE / (this->depth == 0 ? 1 : pow(2, depth));
-		}
-
-		void clear() {
-			this->data.clear();
-			this->objPtrList.clear();
-			this->data.reserve(4);
-		}
-
-		bool isLeaf() const {
-			return data.size() == 0;
 		}
 
 		bool subDivide() {
@@ -182,8 +136,156 @@ public:
 
 		}
 
+		bool contains(const Ball& obj) {
+			return
+				obj.pos.x > pos.x &&
+				obj.pos.x < pos.x + getSize() &&
 
-		void render(sf::RenderWindow& win) const {
+				obj.pos.y > pos.y &&
+				obj.pos.y < pos.y + getSize()
+				;
+		}
+
+		// if it were to be subivided again would it be too small?
+		bool isMinSize() const {
+			return (getSize() / 2.f < minSize);
+		}
+
+		bool isObjInTree(Ball& obj){
+			return
+
+				obj.pos.x > pos.x - SECONDARY_FORCE_END				and
+				obj.pos.x < pos.x + getSize() + SECONDARY_FORCE_END and
+
+				obj.pos.y > pos.y - SECONDARY_FORCE_END				and
+				obj.pos.y < pos.y + getSize() + SECONDARY_FORCE_END
+				;
+		}
+
+
+		//static vectorList<qTree*> leafList;
+
+		void recurseCollectingLeaves(vectorList<qTree*>& leafList) {
+			if (isLeaf())
+				leafList.emplace_back(this);
+			else {
+				for (qTree& tree : data) {
+					tree.recurseCollectingLeaves(leafList);
+				}
+			}
+		}
+
+		vectorList<qTree*> getLeafList() {
+			vectorList<qTree*> list;
+			recurseCollectingLeaves(list);
+			return list;
+		}
+
+		vectorList<
+			vectorList<Ball*>*
+							 > getAllWithinRange(Ball& obj, vectorList<qTree*>& leafList) {
+
+			vectorList<vectorList<Ball*>*> list;
+			//tickleafList();
+			//print(leafList.size());
+			for (qTree*& treePtr : leafList) {
+				qTree& leaf = *treePtr;
+
+				if (leaf.isObjInTree(obj)) {
+					list.emplace_back(&leaf.objPtrList);
+				}
+
+			}
+
+			return list;
+
+
+
+		}
+
+
+
+		bool addObj(Ball* objPtr) {
+
+
+			if (not this->contains(*objPtr))
+				return false;
+
+			if (this->isLeaf()) {
+
+				if (isMinSize()) {
+					objPtrList.emplace_back(objPtr);
+					return true;
+				}
+				// if can be dubdivided
+				else {
+
+					// if there is space
+					if (objPtrList.size() < maxObjCountBeforeSubdivide) {
+						objPtrList.emplace_back(objPtr);
+						return true;
+					}
+
+					// if there is not space and can be subdivided
+					else {
+
+						subDivide();
+
+						for (qTree& tree : data) {
+							if (tree.addObj(objPtr))
+								return true;
+						}
+					}
+				}
+
+
+				if (objPtrList.size() < maxObjCountBeforeSubdivide or isMinSize()) {
+					objPtrList.emplace_back(objPtr);
+					return true;
+
+
+
+				}
+			}
+			// if not a leaf, add to children
+			else {
+				for (qTree& tree : data) {
+					if (tree.addObj(objPtr))
+						return true;
+				}
+			}
+
+			return false;
+
+		}
+
+
+
+		void renderExtra(sf::RenderWindow& win, Ball& ball0) {
+			auto leafList = getLeafList();
+
+			vectorList<vectorList<Ball*>*>
+				BallPtrListList = getAllWithinRange(ball0, leafList);
+
+			int i = 0;
+			sf::CircleShape temp(20);
+			temp.setFillColor(rgba(128, 0, 128));
+
+			for (vectorList<Ball*>* & listPtr : BallPtrListList) {
+				for (Ball* & objPtr : *listPtr) {
+					Ball& obj = *objPtr;
+					temp.setPosition(obj.getPosSfml());
+					win.draw(temp);
+
+
+				}
+			}
+
+		}
+
+
+
+		void render(sf::RenderWindow& win) {
 
 			sf::RectangleShape rect(sf::Vector2f(getSize(), getSize()));
 			rect.setPosition(vf(pos));
@@ -197,10 +299,14 @@ public:
 
 			for (Ball* obj : objPtrList) {
 				temp.setPosition(vf(obj->pos));
-				win.draw(temp);
+				//win.draw(temp);
 			}
 
-			for (const qTree& tree : data)
+			
+
+
+
+			for (qTree& tree : data)
 				tree.render(win);
 
 
@@ -210,5 +316,6 @@ public:
 
 	};
 
-
 };
+
+//vectorList<Integrator::qTree*> Integrator::qTree::leafList = vectorList<qTree*>();
