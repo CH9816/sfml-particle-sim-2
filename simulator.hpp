@@ -19,7 +19,7 @@ class Simulation {
 	//vectorList<Ball> objects;
 	Ball *objects;
 	unsigned int objectCount = 0;
-	ForceGetter fGetter;
+	ForceGetter *fGetterPtr;
 	
 
 public:
@@ -31,11 +31,12 @@ public:
 
 
 
-	Simulation(sf::RenderWindow & window, IntegratorType integratorType, ForceGetter *fGetter, fpoint dt) {
+	Simulation(sf::RenderWindow & window, IntegratorType integratorType, ForceGetter* fGetterPtr, fpoint dt) {
 		this->physicsEngine = Integrator(dt, integratorType);
 		this->window = &window;
-		this->renderEngine = Render(window, fGetter);
-		this->fGetter = *fGetter;
+		this->renderEngine = Render(window, fGetterPtr);
+		this->fGetterPtr = fGetterPtr;
+
 		forcount(10)
 			timeList.push_back("NULL");
 
@@ -76,9 +77,10 @@ public:
 			fpoint velMagSq = obj.vel.magsq();
 			fpoint mag = sqrt(velMagSq);
 			const Vector axi = obj.vel / (mag == 0 ? .01f : mag) ;
-			obj.applyForce(-axi * velMagSq * QUADRATIC_RESISTANCE);
-			
-			obj.vel *= (1 - (LINEAR_RESISTANCE_OVER_DT) * physicsEngine.dt);
+			//obj.applyForce(-axi * velMagSq * QUADRATIC_RESISTANCE);
+			obj.applyForce(-axi * mag * LINEAR_RESISTANCE);
+
+			//obj.vel *= (1 - (LINEAR_RESISTANCE_OVER_DT) * physicsEngine.dt);
 		}
 	}
 
@@ -104,12 +106,12 @@ public:
 
 		p1.applyForce(
 			normNormalised *
-			fGetter.getForce(normMag, p1.getColourIdThreadSafe(), p2.getColourIdThreadSafe()) 
+			fGetterPtr->getForce(normMag, p1.getColourIdThreadSafe(), p2.getColourIdThreadSafe()) 
 			//* dt
 		);
 		p2.applyForce(
 			normNormalised *
-			-fGetter.getForce(normMag, p2.getColourIdThreadSafe(), p1.getColourIdThreadSafe()) 
+			-fGetterPtr->getForce(normMag, p2.getColourIdThreadSafe(), p1.getColourIdThreadSafe()) 
 			//* -dt
 		);
 
@@ -206,11 +208,23 @@ public:
 
 
 
+
+
+
+
+
+
 	
 
 	Timer timer, totalTimer;
+	Vector oldMp;
+
+	vectorList<int> ballIndexList;
+	vectorList<Vector> dVectors;
 	
 	void simulate() {
+
+		Vector mp = getMousePos(*window);
 
 		totalTimer.start();
 
@@ -250,13 +264,41 @@ public:
 
 			obj.update();
 		}
+
+
+
+		
+		if (isMousePressed(sf::Mouse::Right)) {
+			int r = 50;
+			Vector dMp = oldMp - mp;
+			for (int i = 0; i < objectCount; i++) {
+				Vector dPos = (objects[i].pos - mp);
+				if (dPos.magsq() < r * r) {
+
+					// if already in lists
+					if (std::find(ballIndexList.begin(), ballIndexList.end(), i) != ballIndexList.end()) {
+						continue;
+					}
+
+					dVectors.emplace_back(dPos);
+					ballIndexList.emplace_back(i);
+				}
+			}
+		}
+		else {
+			dVectors.clear();
+			ballIndexList.clear();
+		}
+
+		for (int i = 0; i < dVectors.size(); i++) {
+			Vector dPos = dVectors[i];
+			int ballIndex = ballIndexList[i];
+			objects[ballIndex].pos = mp + dPos;
+		}
+
+		
+
 		timeList[i++] = "object update time = " + string(timer.get(-3)) + "ms";
-
-
-
-
-
-
 
 		timeList[i++] =
 			"total simulate time = " + string(totalTimer.get(-3)) +
@@ -265,6 +307,9 @@ public:
 
 		timeList[i++] =
 			"n = " + string(objectCount);
+
+
+		oldMp = mp.copy();
 	}
 
 };

@@ -262,6 +262,9 @@ public:
 
 
 		void renderExtra(sf::RenderWindow& win, Ball& ball0) {
+
+			return;
+			
 			auto leafList = getLeafList();
 
 			vectorList<vectorList<Ball*>*>
@@ -289,7 +292,7 @@ public:
 
 			sf::RectangleShape rect(sf::Vector2f(getSize(), getSize()));
 			rect.setPosition(vf(pos));
-			rect.setFillColor(isMinSize() ? rgba(200, 0, 0, 100) : C::Transparent);
+			rect.setFillColor(isMinSize() ? rgba(100, 0, 0, 50) : C::Transparent);
 			rect.setOutlineColor(rgba(100, 100, 100, 100));
 			rect.setOutlineThickness(5);
 			win.draw(rect);

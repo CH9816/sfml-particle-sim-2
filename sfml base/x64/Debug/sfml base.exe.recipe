@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\c\particle life 2\x64\Debug\sfml base.exe</FullPath>
+      <FullPath>C:\programs\c\sfml-particle-sim-2\x64\Debug\sfml base.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

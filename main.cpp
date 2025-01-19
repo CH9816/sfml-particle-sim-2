@@ -46,6 +46,8 @@ void simThread(sf::RenderWindow & window, Simulation & sim, abool & run, int tps
 
     TpsClock clock(tps);
 
+    RandomGen rgen;
+
     while (window.isOpen())
     {
 
@@ -66,6 +68,26 @@ void simThread(sf::RenderWindow & window, Simulation & sim, abool & run, int tps
                 ));
             }
             i++;
+        }
+
+        if (isPressed(K::LShift) ? isPressed(K::Q) : isPressedOnce(K::Q)) {
+            
+            const fpoint r = 300;
+            auto mp = getMousePos(window);
+
+            forcount(100) {
+
+                const fpoint currentR = rgen.randint(0, r);
+                const fpoint theta = rgen.randint(0, 360) * 3.1415 / 180.f;
+
+                sim.addBall(Ball(
+                    mp + sf::Vector2f(currentR * cos(theta), currentR * sin(theta)),
+                    10, i % colourIdMap.size()
+                ));
+
+
+
+            }
         }
 
 
@@ -124,8 +146,8 @@ int main()
     //return -2;
     
     sf::RenderWindow window(sf::VideoMode({ scrw, scrh }), "SFML works!");
-    ForceGetter fGetter = ForceGetter();
-	Simulation sim = Simulation(window, IntegratorType::Verlet, &fGetter, Dt);
+    ForceGetter *fGetterPtr = new ForceGetter();
+	Simulation sim = Simulation(window, IntegratorType::Verlet, fGetterPtr, Dt);
 	RandomGen rand = RandomGen();
 
     window.setFramerateLimit(FPS);
@@ -166,7 +188,7 @@ int main()
         sim.draw();
 
         if (isPressed(K::R)) {
-            fGetter.randomiseForceMaxMatrix(10, 0);
+            fGetterPtr->randomiseForceMaxMatrix(1, 0);
         }
         if (isPressed((K::Key(2)))) // C taken
             sim.clearObjects();
@@ -191,6 +213,6 @@ int main()
 
     joinThList(thList);
 
-    
+    delete fGetterPtr;
 
 }

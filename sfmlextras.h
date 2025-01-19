@@ -38,4 +38,10 @@ sf::Vector2f vf(const T& vec) {
 	return sf::Vector2f(vec.x, vec.y);
 }
 
-
+template <typename T>
+void printVectorList(const std::vector<T>& vec) {
+	for (const T& element : vec) {
+		std::cout << element << ",";
+	}
+	std::cout << std::endl;
+}

@@ -1,107 +1,118 @@
 ﻿  main.cpp
-C:\c\particle life 2\integrator.hpp(36,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\integrator.hpp(36,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\integrator.hpp(45,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\integrator.hpp(45,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\integrator.hpp(88,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\integrator.hpp(88,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\random.hpp(27,22): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\programs\c\sfml-particle-sim-2\random.hpp(27,22): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\forcegetter.hpp(40,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
-C:\c\particle life 2\forcegetter.hpp(40,29): warning C4244:         with
-C:\c\particle life 2\forcegetter.hpp(40,29): warning C4244:         [
-C:\c\particle life 2\forcegetter.hpp(40,29): warning C4244:             _Ty=float
-C:\c\particle life 2\forcegetter.hpp(40,29): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:             _Ty=float
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\forcegetter.hpp(41,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
-C:\c\particle life 2\forcegetter.hpp(41,29): warning C4244:         with
-C:\c\particle life 2\forcegetter.hpp(41,29): warning C4244:         [
-C:\c\particle life 2\forcegetter.hpp(41,29): warning C4244:             _Ty=float
-C:\c\particle life 2\forcegetter.hpp(41,29): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:             _Ty=float
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\forcegetter.hpp(49,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(54,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(62,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\c\particle life 2\render.hpp(62,44): warning C4244:         with
-C:\c\particle life 2\render.hpp(62,44): warning C4244:         [
-C:\c\particle life 2\render.hpp(62,44): warning C4244:             T=float
-C:\c\particle life 2\render.hpp(62,44): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:             T=float
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(62,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\c\particle life 2\render.hpp(62,40): warning C4244:         with
-C:\c\particle life 2\render.hpp(62,40): warning C4244:         [
-C:\c\particle life 2\render.hpp(62,40): warning C4244:             T=float
-C:\c\particle life 2\render.hpp(62,40): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:             T=float
+C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(63,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\c\particle life 2\render.hpp(63,44): warning C4244:         with
-C:\c\particle life 2\render.hpp(63,44): warning C4244:         [
-C:\c\particle life 2\render.hpp(63,44): warning C4244:             T=float
-C:\c\particle life 2\render.hpp(63,44): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:             T=float
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(63,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\c\particle life 2\render.hpp(63,40): warning C4244:         with
-C:\c\particle life 2\render.hpp(63,40): warning C4244:         [
-C:\c\particle life 2\render.hpp(63,40): warning C4244:             T=float
-C:\c\particle life 2\render.hpp(63,40): warning C4244:         ]
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         with
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         [
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:             T=float
+C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(180,57): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(184,57): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(213,25): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\programs\c\sfml-particle-sim-2\render.hpp(217,25): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\render.hpp(322,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\render.hpp(326,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(43,22): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(44,22): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(73,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(74,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(79,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(80,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(128,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(129,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(130,26): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(131,26): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(143,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(144,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(147,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(148,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(151,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(152,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(155,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(156,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(171,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(172,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(186,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(187,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(238,21): warning C4018: '<': signed/unsigned mismatch
+C:\programs\c\sfml-particle-sim-2\simulator.hpp(245,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\main.cpp(38,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\c\particle life 2\main.cpp(39,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\c\particle life 2\integrator.hpp(109,1): warning C4715: 'Integrator::qTree::getPosVector': not all control paths return a value
-  SetPlot.vcxproj -> C:\c\particle life 2\x64\Debug\sfml base.exe
+C:\programs\c\sfml-particle-sim-2\main.cpp(38,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(39,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(80,57): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(80,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(80,39): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(81,68): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\programs\c\sfml-particle-sim-2\main.cpp(81,36): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+  sfmlextras.cpp
+C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(75,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(74,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(73,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+  Generating Code...
+C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(142,1): warning C4715: 'isPressedOnce': not all control paths return a value
+C:\programs\c\sfml-particle-sim-2\integrator.hpp(109,1): warning C4715: 'Integrator::qTree::getPosVector': not all control paths return a value
+  SetPlot.vcxproj -> C:\programs\c\sfml-particle-sim-2\x64\Debug\sfml base.exe

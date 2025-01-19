@@ -1,7 +1,7 @@
 #pragma once
 #include "random.hpp"
 
-// singleton
+// 
 struct ForceGetter {
 
 	RandomGen rgen;
@@ -10,11 +10,16 @@ struct ForceGetter {
 		rgen = RandomGen(RANDOM_SEED);
 	};
 
-	ForceGetter operator=(const ForceGetter& other) {
-		rgen = other.rgen;
-		// TODO
-		return *this;
-	}
+	//ForceGetter operator=(const ForceGetter& other) {
+	//	//rgen = other.rgen;
+	//	//forceMaxMatrix = other.forceMaxMatrix;
+	//	
+	//	//ForceGetter fGetter = ForceGetter();
+	//	//fGetter.forceMaxMatrix = this->forceMaxMatrix;
+	//	//fGetter.rgen = this->rgen;
+
+	//	//return fGetter;
+	//}
 
 
 	const float
@@ -50,10 +55,11 @@ struct ForceGetter {
 				}
 			}
 		}
-
-		//for (vectorList<float>& row : forceMaxMatrix) {
-		//	printVectorList(row);
-		//}
+		print("{");
+		for (vectorList<float>& row : forceMaxMatrix) {
+			printVectorList(row);
+		}
+		print("}");
 	}
 
 	// https://www.desmos.com/calculator/zahxpb0kld

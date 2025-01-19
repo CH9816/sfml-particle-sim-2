@@ -15,7 +15,11 @@
 //template void print<std::string>(std::string t);
 
 
-vectorList<C> colourIdMap = { rgba(255, 0, 0), rgba(0, 255, 0), rgba(0, 0, 255)};
+vectorList<C> colourIdMap = {
+	rgba(255, 0, 0), rgba(0, 255, 0), rgba(0, 0, 255),
+	rgba(255, 255, 255), rgba(255,0,255), rgba(0,255,255),
+	rgba(255,255,0)
+};
 C getColour(int id) {
 	return colourIdMap[id];
 }
@@ -363,11 +367,24 @@ public:
 		mpCircle.setOrigin(mpCircle.getRadius(), mpCircle.getRadius());	
 		mpCircle.setPosition(win.mapPixelToCoords(sf::Mouse::getPosition(win)));
 		//win.draw(mpCircle);
+		
 
-		drawQtree();
+		if (isPressed(K::Tab))
+			drawQtree();
 
 		if (objCount > 0)
 			tree.renderExtra(win, objList[0]);
 
+
+		int r = 50;
+		sf::CircleShape circle(r);
+		circle.setFillColor(C::Transparent);
+		circle.setOutlineColor(C::White);
+		circle.setOutlineThickness(2);
+		circle.setPosition(getMousePos(win));
+		circle.setOrigin(r, r);
+
+		if (isMousePressed(sf::Mouse::Right))
+			win.draw(circle);
 	}
 };
