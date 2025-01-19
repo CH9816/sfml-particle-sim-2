@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "globals.h"
 #include <iostream>
+#include <utility>
 #include "defines.hpp"
 
 float mouseScroll;
@@ -35,6 +36,7 @@ bool handleEvents(sf::RenderWindow& win) {
 		}
 
 		if (isPressed(K::Escape)) {
+			win.close();
 			return false;
 		}
 
@@ -56,6 +58,10 @@ void printColour(sf::Color c) {
 
 bool isMousePressed(sf::Mouse::Button button) {
 	return sf::Mouse::isButtonPressed(button);
+}
+
+sf::Vector2f getMousePos(sf::RenderWindow& win) {
+	return win.mapPixelToCoords( (sf::Mouse::getPosition(win)) );
 }
 
 C rgba(int r, int g, int b, int a) {
@@ -85,6 +91,86 @@ sf::Color getColourFromForce(float force, float maxForcePositive, float maxForce
 		return linearColour(force / maxForceNegative, zeroColour, rgba(0, 0, 255, 100));
 	}
 
+}
+
+
+struct KeyListener {
+	K::Key key;
+	bool wasPressedLastUpdate;
+	KeyListener(K::Key key) {
+		this->key = key;
+		wasPressedLastUpdate = false;
+	}
+};
+
+static vectorList<KeyListener> keyListenerList;
+
+static int isInKeyListenerList(K::Key key) {
+	int i = 0;
+	for (auto& keyL : keyListenerList) {
+		if (keyL.key == key)
+			return i;
+		i++;
+	}
+	return -1;
+}
+
+bool isPressedOnce(K::Key key) {
+
+	int index = isInKeyListenerList(key);
+
+	if (not isPressed(key)) {
+		if (index == -1)
+			keyListenerList.push_back(KeyListener(key));
+		else
+			keyListenerList[index].wasPressedLastUpdate = false;
+		return false;
+	}
+
+
+
+	if (index != -1) {
+		KeyListener& listener = keyListenerList[index];
+		if (listener.wasPressedLastUpdate) {
+			return false;
+		}
+		else {
+			listener.wasPressedLastUpdate = true;
+			return true;
+		}
+	}
+}
+
+vectorList<std::pair<int, int>> divideInclusive(int start, int end, int n, bool overlap) {
+	vectorList<std::pair<int, int>> list;
+
+	if (start == 0 and end == 0) {
+		forcount(n) {
+			list.push_back(std::pair<int, int>(0, 0));
+		}
+		return list;
+	}
+
+	int per = overlap 
+		? (end - start) / (n - 1) 
+		: (end - start - n + 1) / (n - 1);
+
+	while (start + per < end) {
+		list.push_back(std::pair(start, start + per));
+		start += per;
+		if (not overlap)
+			start += 1;	
+	}
+
+	if (list.size() < n) {
+		list.push_back(std::pair(start, end));
+	}
+	else {
+		list[list.size() - 1].second = end;
+	}
+	
+
+	return list;
 }
 
 

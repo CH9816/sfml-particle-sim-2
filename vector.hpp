@@ -21,7 +21,7 @@ public:
 		this->y = 0;
 	}
 
-	Vector copy() {
+	Vector copy() const {
 		return Vector(x, y);
 	}
 
@@ -41,8 +41,11 @@ public:
 	fpoint dot(Vector vec) const {
 		return this->x * vec.x + this->y * vec.y;
 	}
+	fpoint magsq() const {
+		return x * x + y * y;
+	}
 	fpoint magnitude() const {
-		return sqrt(x * x + y * y);
+		return sqrt(magsq());
 	}
 	fpoint mag() const {
 		return this->magnitude();
@@ -51,24 +54,28 @@ public:
 
 
 
-	void operator+= (Vector vec) {
+	void operator+= (const Vector &vec) {
 		this->x += vec.x;
 		this->y += vec.y;
 	}
 
-	void operator-= (Vector vec) {
+	void operator-= (const Vector &vec) {
 		this->x -= vec.x;
 		this->y -= vec.y;
 	}
 
-	void operator/= (fpoint scalar) {
+	void operator/= (const fpoint &scalar) {
 		this->x /= scalar;
 		this->y /= scalar;
 	}
 
-	void operator*= (fpoint scalar) {
+	void operator*= (const fpoint &scalar) {
 		this->x *= scalar;
 		this->y *= scalar;
+	}
+
+	Vector operator-() const {
+		return Vector(-x, -y);
 	}
 
 };

@@ -20,6 +20,12 @@ C getColour(int id) {
 	return colourIdMap[id];
 }
 
+
+
+
+
+
+
 class Render
 {
 
@@ -51,6 +57,13 @@ public:
 		init();
 	}
 
+	void drawLine(int x1, int y1, int x2, int y2, C colour) {
+		sf::VertexArray lines(sf::Lines, 2);
+		lines.append(sf::Vertex(sf::Vector2f(x1, y1), colour));
+		lines.append(sf::Vertex(sf::Vector2f(x2, y2), colour));
+		(*windowPtr).draw(lines);
+	}
+
 
 
 	// https://github.com/SFML/SFML/wiki/Source:-Zoom-View-At-%28specified-pixel%29
@@ -64,8 +77,9 @@ public:
 		sf::View view{ window.getView() };
 		view.zoom(zoom);
 		window.setView(view);
-		const sf::Vector2f afterCoord{ window.mapPixelToCoords(mp) };
-		const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
+		const sf::Vector2f 
+			afterCoord{ window.mapPixelToCoords(mp) },
+			offsetCoords{ beforeCoord - afterCoord };
 		view.move(offsetCoords);
 		window.setView(view);
 	}
@@ -84,9 +98,9 @@ public:
 		sf::Vector2i mp = sf::Mouse::getPosition(*windowPtr);
 		sf::Vector2i dMp = oldMp - mp;
 
-		if (isMousePressed(Mouse::Left)) {
+		if (isMousePressed(Mouse::Left)) 
 			panView(dMp);
-		}
+
 		if (mouseScroll != 0)
 			zoomViewAtMp(1 + -mouseScroll * .1f);
 
@@ -101,7 +115,7 @@ public:
 	}
 
 
-
+	
 
 
 	void renderMatrix() {
@@ -273,11 +287,18 @@ public:
 
 	}
 
+	Integrator::qTree tree = Integrator::qTree(0);
+
+	void drawQtree() {
+		tree.render(*windowPtr);
+	}
 
 
 
-	void render(vectorList<Ball> &objects) {
+	void render(Ball* objList, unsigned int objCount) {
 		sf::RenderWindow& win = getWindow();
+
+
 
 
 		C attrC = rgba(100, 0, 0, 100);
@@ -291,15 +312,30 @@ public:
 
 		forceFieldAttr.setOrigin(forceFieldAttr.getRadius(), forceFieldAttr.getRadius());	
 		forceFieldRep.setOrigin(forceFieldRep.getRadius(), forceFieldRep.getRadius());
+		
 
-		for (Ball& obj : objects) {
+		sf::VertexArray forceLine(sf::Lines, 2);
+		forceLine.append(sf::Vertex()); forceLine.append(sf::Vertex());
+
+
+		//for (Ball& obj : objects) {
+		for (int i = 0; i < objCount; i++){
+
+			Ball& obj = objList[i];
+
 			win.draw(obj);
 
 			if (isPressed(K::Tab))
 			{
 				forceFieldAttr.setPosition(obj.getPosition());
 				forceFieldRep.setPosition(obj.getPosition());
-				win.draw(forceFieldAttr); win.draw(forceFieldRep);			
+				win.draw(forceFieldAttr); win.draw(forceFieldRep);	
+
+				forceLine[0].position = obj.getPosSfml();
+				forceLine[1] = vf(obj.pos + obj.rForce);
+
+				win.draw(forceLine);
+
 			}
 
 
@@ -308,23 +344,27 @@ public:
 
 		handleZoomAndPan();
 
+
+		// border
 		sf::RectangleShape border;
 		border.setFillColor(sf::Color::Transparent);
 		border.setOutlineColor(sf::Color::White);
 		border.setOutlineThickness(5);
-		border.setSize(sf::Vector2f(scrw, scrh));
+		border.setSize(sf::Vector2f(WORLD_SIZE, WORLD_SIZE));
 		border.setPosition(0, 0);
 		win.draw(border);
 
+		//
 		renderMatrix();
 
 
+		// ball at mouse
 		sf::CircleShape mpCircle(3);
 		mpCircle.setOrigin(mpCircle.getRadius(), mpCircle.getRadius());	
 		mpCircle.setPosition(win.mapPixelToCoords(sf::Mouse::getPosition(win)));
-		win.draw(mpCircle);
+		//win.draw(mpCircle);
 
-		
+		drawQtree();
 
 
 	}

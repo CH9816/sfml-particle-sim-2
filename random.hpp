@@ -22,4 +22,8 @@ public:
     double get() {
         return range(mt);
     }
+
+    int randint(int start, int end) {
+        return start + (end - start + 1) * get();
+    }
 };

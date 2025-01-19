@@ -16,7 +16,7 @@ class PhysicsObject
 
 public:
 
-	Vector pos, ppos, vel, acc;
+	Vector pos, ppos, vel, acc, rForce;
 	fpoint mass;
 
 	sf::Vector2<fpoint> getPosSfml() {
@@ -28,6 +28,7 @@ public:
 		this->ppos = Vector();
 		this->vel = Vector();
 		this->acc = Vector();
+		this->rForce = Vector();
 		this->mass = 0;
 	}
 
@@ -37,6 +38,7 @@ public:
 		this->vel = Vector();
 		this->acc = Vector();
 		this->mass = mass;
+		this->rForce = Vector();
 		ready = true;
 	}
 
@@ -70,6 +72,8 @@ public:
 	int cId;
 	fpoint mass;
 
+	Ball() = default;
+
 	Ball(Vector pos, float radius, int colour, fpoint mass = 1)
 		: PhysicsObject(pos), sf::CircleShape(radius, 10)
 	{
@@ -88,7 +92,7 @@ public:
 	void update() {
 		this->setPosition(this->getPosSfml());
 		// TODO remove this shit
-		this->setFillColor(getColour(cId));
+		this->setFillColor(this->colour);
 	}
 
 	int getColourIdThreadSafe() {

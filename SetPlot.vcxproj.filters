@@ -59,5 +59,8 @@
     <ClInclude Include="forcegetter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="timer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

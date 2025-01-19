@@ -169,6 +169,7 @@
     <ClInclude Include="render.hpp" />
     <ClInclude Include="sfmlextras.h" />
     <ClInclude Include="simulator.hpp" />
+    <ClInclude Include="timer.hpp" />
     <ClInclude Include="vector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
