@@ -25,7 +25,7 @@ class Simulation {
 public:
 
 	vectorList<std::string> timeList;
-	vectorList<thread> thList;
+	//vectorList<thread> thList;
 
 	int thcount = 4;
 
@@ -44,10 +44,14 @@ public:
 		objects = new Ball[MAX_OBJECT_COUNT];
 		print("done");
 
+		init_threads();
+
 	}
 
 	~Simulation() {
 		delete[] objects;
+		for (bool* boolPtr : goList)
+			delete boolPtr;
 	}
 
 
@@ -56,9 +60,13 @@ public:
 
 
 
-	void addBall(const Ball &obj) {
+	bool addBall(const Ball &obj) {
+		if (objectCount + 1 >= MAX_OBJECT_COUNT)
+			return false;
 		//objects.push_back(obj);
-		objects[objectCount++] = obj;
+		objects[objectCount] = obj;
+		objectCount++;
+		return true;
 	}
 
 	void draw() {
@@ -86,6 +94,7 @@ public:
 
 	void clearObjects() {
 		objectCount = 0;
+		Ball::maxId = 0;
 	}
 
 
@@ -158,8 +167,128 @@ public:
 		}
 	}
 
+	vectorList<thread> thList;
+	vectorList<bool*> goList;
+	abool run;
 
+
+	void init_threads() {
+
+		int simThreadCount = 4, index = 0;
+
+		forcount(simThreadCount) {
+			goList.emplace_back(new bool(false));
+		}
+		run = true;
+
+
+		// building q tree thread
+		// method object arg
+		thList.emplace_back(thread(
+			&Simulation::thread_buildQTree, this,
+			ref(run), ref(*goList[0])
+		));
+
+		// doing collision detection
+		thList.emplace_back(thread(
+			&Simulation::thread_nlognParticleForce, this,
+			ref(run), ref(*goList[1])
+		));
+
+
+	}
+
+	void start_buildQTree_thread() {
+		*goList[0] = true;
+	}
+
+
+
+	void simulate_threaded() {
+		start_buildQTree_thread();
+		//nlogn_ParticleForce(stableTree);
+		start_nlognParticleForce_thread();
+
+	}
 	
+	void start_nlognParticleForce_thread() {
+		*goList[1] = true;
+	}
+
+
+	void thread_nlognParticleForce(abool& run, bool& go) {
+		while (run) {
+			if (go) {
+				go = false;
+				nlogn_ParticleForce(stableTree);
+			}
+			else {
+				// todo
+			}
+		}
+
+
+	}
+
+
+
+
+
+
+
+	Integrator::qTree
+		stableTree = Integrator::qTree(-1, { 0, 0 }, SECONDARY_FORCE_END),
+		forwardTree = Integrator::qTree(-1, { 0, 0 }, SECONDARY_FORCE_END)
+		;
+
+	// keep complete locked version of the tree in stable tree
+	//  make sure to update stable tree at least every x ms
+	void thread_buildQTree(abool& run, bool& go) {
+
+		//TpsClock tpsClock(50);
+		//bool
+		//	stableTreeLock = false,
+		//	forwardTreeLock = false
+		//	;
+
+		//done = false;
+
+		while (run) {
+
+			if (go) {
+				go = false;
+
+				// make blank tree
+				//Integrator::qTree tree =
+				//	Integrator::qTree(-1, { 0,0 }, SECONDARY_FORCE_END)
+				//	;
+
+				forwardTree.clear();
+
+				for (int i = 0; i < objectCount; i++)
+					forwardTree.addObj(&objects[i]);
+
+				stableTree.locked = true;
+				stableTree = forwardTree;
+				//stableTree.clear();
+				//for (int i = 0; i < objectCount; i++)
+				//	stableTree.addObj(&objects[i]);
+				stableTree.locked = false;
+				renderEngine.tree = forwardTree;
+				//done = true;
+
+			
+				//print(stableTree.waitTicks);
+			
+			
+			}
+
+
+		}
+
+
+	}
+
 
 
 
@@ -173,31 +302,48 @@ public:
 		for (int i = 0; i < objectCount; i++)
 			tree.addObj(&objects[i]);
 
-
-
-
-
-
 	}
 
 
 
-	void nlogn_ParticleForce() {
-		auto leafList = tree.getLeafList();
+	void nlogn_ParticleForce(Integrator::qTree& treeInp) {
+		auto leafList = treeInp.getLeafList();
 		
 		for (int i = 0; i < objectCount; i++) {
 			Ball& obj = objects[i];
 
-			vectorList<vectorList<Ball*>*>
-				BallPtrListList = tree.getAllWithinRange(obj, leafList);
+			//vectorList<const vectorList<Ball*>*>
+			//vectorList<Ball*>
+			vectorList<int>
+				BallIndexList = treeInp.getAllWithinRange(
+					obj, leafList, objects, objectCount
+				);
 
-			for (vectorList<Ball*>*& listPtr : BallPtrListList) {
-				for (Ball* objPtr : *listPtr) {
-					Ball& otherObj = *objPtr;
+			//for (const vectorList<Ball*>* & listPtr : BallPtrListList) {
+				//for (Ball* objPtr : *listPtr) {
+				//	Ball& otherObj = *objPtr;
 
-					if (objPtr != &objects[i])
-						resolveInteraction(obj, otherObj);
+				//	// when adding objects too fast objPtr here points to incomplete object ?????
 
+
+				//	if (objPtr != &objects[i])
+				//		resolveInteraction(obj, otherObj);
+
+				//}
+
+			// TODO INSTEAD OF PASSING POINTERS TRY INDEXES
+
+			//for (Ball*& otherBallPtr : BallPtrList) {
+			//
+			//	if (*otherBallPtr != objects[i]) {
+			//		resolveInteraction(obj, *otherBallPtr);
+			//	}
+
+			//}
+
+			for (int j : BallIndexList) {
+				if (i != j) {
+					resolveInteraction(objects[i], objects[j]);
 				}
 			}
 
@@ -211,9 +357,7 @@ public:
 
 
 
-
-
-
+	
 	
 
 	Timer timer, totalTimer;
@@ -222,7 +366,7 @@ public:
 	vectorList<int> ballIndexList;
 	vectorList<Vector> dVectors;
 	
-	void simulate() {
+	void simulate_single_threaded() {
 
 		Vector mp = getMousePos(*window);
 
@@ -238,7 +382,7 @@ public:
 
 		timer.start();
 		//n2_particleForce();
-		nlogn_ParticleForce();
+		nlogn_ParticleForce(tree);
 		timeList[i++] = "particle force time = " + string(timer.get(-3)) + "ms";
 
 		dampenMotion();

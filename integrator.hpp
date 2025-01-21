@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include "defines.hpp"
 #include "integratorh.h"
 #include "physicsobject.hpp"
@@ -63,6 +63,8 @@ public:
 		fpoint minSize;
 		int maxObjCountBeforeSubdivide = 10;
 
+		bool locked;
+
 		qTree(fpoint minSize) {
 			depth = 0;
 			data = {};
@@ -70,18 +72,36 @@ public:
 			this->minSize = minSize;
 		};
 
-		void clear() {
+
+		unsigned long waitTicks = 0;
+		void waitForUnlock() {
+			//return;
+			while (locked) {
+				// ehhhhh 
+				waitTicks++;
+			}
+		}
+
+		void clear(bool constructor = false) {
+			if (not constructor)
+				waitForUnlock();
+
 			this->data.clear();
 			this->objPtrList.clear();
 			this->data.reserve(4);
+
+			locked = false;
 		}
 
 		qTree(int parentDepth, const Vector& pos, fpoint minSize) {
+			this->locked = true;
 			this->depth = parentDepth + 1;
 			this->pos = pos.copy();
 			this->minSize = minSize;
 
-			clear();
+			clear(true);
+
+			this->locked = false;
 		}
 
 		fpoint getSize() const {
@@ -91,6 +111,23 @@ public:
 		bool isLeaf() const {
 			return data.size() == 0;
 		}
+
+		vectorList<int> getIndexList_ThreadSafe() {
+			waitForUnlock();
+			locked = true;	
+			vectorList<int> output;
+			if (isLeaf()) {
+				for (Ball* ptr : objPtrList) {
+					if (ptr != nullptr)
+						output.emplace_back(ptr->id);
+				}
+			}
+
+			locked = false;
+			return output;
+
+		}
+
 
 		sf::Vector2f getPosVector(int i) const {
 
@@ -112,6 +149,8 @@ public:
 			if (data.size() == 4)
 				return false;
 
+
+			waitForUnlock();
 
 			forcount(4)
 				data.emplace_back(
@@ -136,7 +175,7 @@ public:
 
 		}
 
-		bool contains(const Ball& obj) {
+		bool contains(const Ball& obj) const {
 			return
 				obj.pos.x > pos.x &&
 				obj.pos.x < pos.x + getSize() &&
@@ -151,13 +190,13 @@ public:
 			return (getSize() / 2.f < minSize);
 		}
 
-		bool isObjInTree(Ball& obj){
+		bool isObjInTree(Ball& obj) const {
+			
 			return
-
-				obj.pos.x > pos.x - SECONDARY_FORCE_END				and
+				obj.pos.x > pos.x			  - SECONDARY_FORCE_END	and
 				obj.pos.x < pos.x + getSize() + SECONDARY_FORCE_END and
 
-				obj.pos.y > pos.y - SECONDARY_FORCE_END				and
+				obj.pos.y > pos.y			  - SECONDARY_FORCE_END	and
 				obj.pos.y < pos.y + getSize() + SECONDARY_FORCE_END
 				;
 		}
@@ -181,18 +220,70 @@ public:
 			return list;
 		}
 
-		vectorList<
-			vectorList<Ball*>*
-							 > getAllWithinRange(Ball& obj, vectorList<qTree*>& leafList) {
+		//vectorList<const
+		//	vectorList<Ball*>*
+		//					 > getAllWithinRange(Ball& obj, vectorList<const qTree*>& leafList)
+		//		const {
 
-			vectorList<vectorList<Ball*>*> list;
+		//	vectorList<Ball*> list;
+
+
+		//	vectorList<const vectorList<Ball*>*> list;
+		//	//tickleafList();
+		//	//print(leafList.size());
+		//	for (const qTree*& treePtr : leafList) {
+		//		const qTree& leaf = *treePtr;
+
+		//		if (leaf.isObjInTree(obj)) {
+		//			//auto temp = &leaf.objPtrList;
+
+		//			// leaf pointer list no consistent
+		//			// must copy pointers prob
+		//			list.emplace_back(&leaf.objPtrList); // here
+		//		}
+
+		//	}
+
+		//	return list;
+
+
+
+		//}
+
+
+		vectorList<int> getAllWithinRange(Ball& obj, vectorList<qTree*>& leafList,
+										  Ball* objects, int objectCount)
+				const {
+
+			vectorList<int> list;
+
+
+			//vectorList<const vectorList<Ball*>*> list;
 			//tickleafList();
 			//print(leafList.size());
 			for (qTree*& treePtr : leafList) {
 				qTree& leaf = *treePtr;
 
 				if (leaf.isObjInTree(obj)) {
-					list.emplace_back(&leaf.objPtrList);
+					//auto temp = &leaf.objPtrList;
+
+					// leaf pointer list no consistent
+					// must copy pointers prob
+					//list.emplace_back(&leaf.objPtrList); // here
+#
+					// for all ball pointers in internal list, copy into list
+					// no reference in loop to force copy, as objPtrList is 
+					// changed by thread
+					//for (Ball* obj : leaf.objPtrList) {
+					//	list.push_back(obj);
+					//}
+
+
+					// not any more now were only returning index within objects array
+					for (int index : leaf.getIndexList_ThreadSafe()) {
+						list.push_back(index);
+					}
+
 				}
 
 			}
@@ -205,16 +296,32 @@ public:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 		bool addObj(Ball* objPtr) {
 
+			waitForUnlock();
+
+			locked = true;
 
 			if (not this->contains(*objPtr))
+				locked = false;
 				return false;
 
 			if (this->isLeaf()) {
 
 				if (isMinSize()) {
 					objPtrList.emplace_back(objPtr);
+					locked = false;
 					return true;
 				}
 				// if can be dubdivided
@@ -223,6 +330,7 @@ public:
 					// if there is space
 					if (objPtrList.size() < maxObjCountBeforeSubdivide) {
 						objPtrList.emplace_back(objPtr);
+						locked = false;
 						return true;
 					}
 
@@ -232,8 +340,10 @@ public:
 						subDivide();
 
 						for (qTree& tree : data) {
-							if (tree.addObj(objPtr))
+							if (tree.addObj(objPtr)) {
+								locked = false;
 								return true;
+							}
 						}
 					}
 				}
@@ -241,6 +351,7 @@ public:
 
 				if (objPtrList.size() < maxObjCountBeforeSubdivide or isMinSize()) {
 					objPtrList.emplace_back(objPtr);
+					locked = false;
 					return true;
 
 
@@ -250,11 +361,14 @@ public:
 			// if not a leaf, add to children
 			else {
 				for (qTree& tree : data) {
-					if (tree.addObj(objPtr))
+					if (tree.addObj(objPtr)) {
+						locked = false;
 						return true;
+					}
 				}
 			}
 
+			locked = false;
 			return false;
 
 		}
@@ -265,30 +379,31 @@ public:
 
 			return;
 			
-			auto leafList = getLeafList();
+			//vectorList<qTree*> leafList = getLeafList();
 
-			vectorList<vectorList<Ball*>*>
-				BallPtrListList = getAllWithinRange(ball0, leafList);
+			//vectorList<const vectorList<Ball*>*>
+			//auto
+				//BallPtrListList = getAllWithinRange(ball0, leafList);
 
 			int i = 0;
 			sf::CircleShape temp(20);
 			temp.setFillColor(rgba(128, 0, 128));
 
-			for (vectorList<Ball*>* & listPtr : BallPtrListList) {
-				for (Ball* & objPtr : *listPtr) {
-					Ball& obj = *objPtr;
-					temp.setPosition(obj.getPosSfml());
-					win.draw(temp);
+			////for (const vectorList<Ball*>* & listPtr : BallPtrListList) {
+			//	for (Ball* & objPtr : *listPtr) {
+			//		Ball& obj = *objPtr;
+			//		temp.setPosition(obj.getPosSfml());
+			//		win.draw(temp);
 
 
-				}
-			}
+			//	}
+			//}
 
 		}
 
 
 
-		void render(sf::RenderWindow& win) {
+		void render(sf::RenderWindow& win) const {
 
 			sf::RectangleShape rect(sf::Vector2f(getSize(), getSize()));
 			rect.setPosition(vf(pos));
@@ -309,7 +424,7 @@ public:
 
 
 
-			for (qTree& tree : data)
+			for (const qTree& tree : data)
 				tree.render(win);
 
 

@@ -95,7 +95,8 @@ void simThread(sf::RenderWindow & window, Simulation & sim, abool & run, int tps
 
 
 
-        sim.simulate();
+        //sim.simulate_single_threaded();
+        sim.simulate_threaded();
         //sim.draw();
 
         if (not run) {
@@ -133,7 +134,19 @@ void joinThList(vectorList<thread>& thList, float *progress = nullptr) {
 
 
 
-
+//void threadTemp(abool& run, bool& go, vectorList<int>& arr, int index) {
+//    while (run) {
+//        if (go) {
+//            go = false;
+//            arr[index] += 1;
+//        }
+//        else {
+//            // AAAAAA
+//        }
+//
+//
+//    }
+//}
 
 
 
@@ -141,6 +154,47 @@ void joinThList(vectorList<thread>& thList, float *progress = nullptr) {
 
 int main()
 {
+
+    //vectorList<bool*> goList;
+    //abool runtemp = true;
+
+    //int n = 5;
+    //forcount(n) {
+    //    goList.push_back(new bool(false));
+    //}
+
+    //vectorList<thread> thListtemp;
+    //vectorList<int> arr;
+    //forcount(n)
+    //    arr.push_back(0);
+
+
+    //forcount(n) {
+    //    thListtemp.emplace_back(thread(
+    //        threadTemp, ref(runtemp), ref(*goList[i]),
+    //        ref(arr), i
+    //    ));
+    //}
+
+    //while (runtemp) {
+    //    forcount(n)
+    //        std::cout << arr[i] << ",";
+    //    print("");
+    //    if (isPressed(K::A)) {
+    //        *goList[2] = true;
+    //    }
+    //    if (isPressed(K::Q)) {
+    //        runtemp = false;
+    //    }
+    //}
+
+
+    //for (bool* b : goList)
+    //    delete b;
+
+
+
+
 
 
     //return -2;

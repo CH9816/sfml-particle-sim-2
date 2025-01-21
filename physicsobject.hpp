@@ -19,6 +19,7 @@ public:
 	Vector pos, ppos, vel, acc, rForce;
 	fpoint mass;
 
+
 	sf::Vector2<fpoint> getPosSfml() {
 		return sf::Vector2(pos.x, pos.y);
 	}
@@ -71,6 +72,8 @@ public:
 	C colour;
 	int cId;
 	fpoint mass;
+	unsigned long id;
+	static unsigned long maxId;
 
 	Ball() = default;
 
@@ -87,6 +90,7 @@ public:
 		this->setOrigin(radius, radius);
 		this->setPosition(pos.x, pos.y);
 		this->mass = mass;
+		this->id = maxId++;
 	}
 
 	void update() {
@@ -100,4 +104,13 @@ public:
 		return cId;
 	}
 
+	bool operator==(const Ball& other) {
+		return id == other.id;
+	}
+	bool operator!=(const Ball& other) {
+		return id != other.id;
+	}
+
 };
+
+unsigned long Ball::maxId = 0;

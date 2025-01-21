@@ -1,118 +1,181 @@
 ﻿  main.cpp
-C:\programs\c\sfml-particle-sim-2\integrator.hpp(36,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\integrator.hpp(36,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\integrator.hpp(45,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\integrator.hpp(45,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\integrator.hpp(88,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\integrator.hpp(108,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\random.hpp(27,22): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\c\particle life 2\random.hpp(27,22): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:             _Ty=float
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(45,29): warning C4244:         ]
+C:\c\particle life 2\forcegetter.hpp(45,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+C:\c\particle life 2\forcegetter.hpp(45,29): warning C4244:         with
+C:\c\particle life 2\forcegetter.hpp(45,29): warning C4244:         [
+C:\c\particle life 2\forcegetter.hpp(45,29): warning C4244:             _Ty=float
+C:\c\particle life 2\forcegetter.hpp(45,29): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:             _Ty=float
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(46,29): warning C4244:         ]
+C:\c\particle life 2\forcegetter.hpp(46,29): warning C4244: '=': conversion from 'double' to '_Ty', possible loss of data
+C:\c\particle life 2\forcegetter.hpp(46,29): warning C4244:         with
+C:\c\particle life 2\forcegetter.hpp(46,29): warning C4244:         [
+C:\c\particle life 2\forcegetter.hpp(46,29): warning C4244:             _Ty=float
+C:\c\particle life 2\forcegetter.hpp(46,29): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\forcegetter.hpp(54,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\forcegetter.hpp(54,45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:             T=float
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,44): warning C4244:         ]
+C:\c\particle life 2\render.hpp(66,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\c\particle life 2\render.hpp(66,44): warning C4244:         with
+C:\c\particle life 2\render.hpp(66,44): warning C4244:         [
+C:\c\particle life 2\render.hpp(66,44): warning C4244:             T=float
+C:\c\particle life 2\render.hpp(66,44): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:             T=float
-C:\programs\c\sfml-particle-sim-2\render.hpp(66,40): warning C4244:         ]
+C:\c\particle life 2\render.hpp(66,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\c\particle life 2\render.hpp(66,40): warning C4244:         with
+C:\c\particle life 2\render.hpp(66,40): warning C4244:         [
+C:\c\particle life 2\render.hpp(66,40): warning C4244:             T=float
+C:\c\particle life 2\render.hpp(66,40): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:             T=float
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,44): warning C4244:         ]
+C:\c\particle life 2\render.hpp(67,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\c\particle life 2\render.hpp(67,44): warning C4244:         with
+C:\c\particle life 2\render.hpp(67,44): warning C4244:         [
+C:\c\particle life 2\render.hpp(67,44): warning C4244:             T=float
+C:\c\particle life 2\render.hpp(67,44): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         with
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         [
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:             T=float
-C:\programs\c\sfml-particle-sim-2\render.hpp(67,40): warning C4244:         ]
+C:\c\particle life 2\render.hpp(67,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\c\particle life 2\render.hpp(67,40): warning C4244:         with
+C:\c\particle life 2\render.hpp(67,40): warning C4244:         [
+C:\c\particle life 2\render.hpp(67,40): warning C4244:             T=float
+C:\c\particle life 2\render.hpp(67,40): warning C4244:         ]
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(184,57): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\c\particle life 2\render.hpp(184,57): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(217,25): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\c\particle life 2\render.hpp(217,25): warning C4244: '*=': conversion from 'float' to 'sf::Uint8', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\render.hpp(326,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\render.hpp(326,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(44,22): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
+C:\c\particle life 2\render.hpp(380,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(74,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\render.hpp(385,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(80,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\render.hpp(385,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(129,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(44,22): warning C4244: 'initializing': conversion from 'double' to 'size_t', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(131,26): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(82,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(144,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\simulator.hpp(139,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(148,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\simulator.hpp(141,26): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(152,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\simulator.hpp(154,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(156,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\simulator.hpp(158,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(172,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(162,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(187,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(166,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\simulator.hpp(245,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(274,23): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\programs\c\sfml-particle-sim-2\main.cpp(38,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(39,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(80,57): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(80,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(80,39): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(81,68): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\programs\c\sfml-particle-sim-2\main.cpp(81,36): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-  sfmlextras.cpp
-C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(75,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
-C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(74,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
-C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(73,8): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
-  Generating Code...
-C:\programs\c\sfml-particle-sim-2\sfmlextras.cpp(142,1): warning C4715: 'isPressedOnce': not all control paths return a value
-C:\programs\c\sfml-particle-sim-2\integrator.hpp(109,1): warning C4715: 'Integrator::qTree::getPosVector': not all control paths return a value
-  SetPlot.vcxproj -> C:\programs\c\sfml-particle-sim-2\x64\Debug\sfml base.exe
+C:\c\particle life 2\simulator.hpp(302,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'main.cpp')
+  
+C:\c\particle life 2\simulator.hpp(312,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'main.cpp')
+  
+C:\c\particle life 2\simulator.hpp(396,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'main.cpp')
+  
+C:\c\particle life 2\simulator.hpp(418,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'main.cpp')
+  
+C:\c\particle life 2\main.cpp(38,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\main.cpp(39,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\main.cpp(80,57): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\c\particle life 2\main.cpp(80,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\c\particle life 2\main.cpp(80,39): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+C:\c\particle life 2\main.cpp(81,68): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\c\particle life 2\main.cpp(81,36): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+C:\c\particle life 2\integrator.hpp(146,1): warning C4715: 'Integrator::qTree::getPosVector': not all control paths return a value
+sfml-graphics-s-d.lib(Transformable.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Transformable.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Color.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Color.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Vertex.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Vertex.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(VertexArray.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(VertexArray.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Shape.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Shape.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(CircleShape.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(CircleShape.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RectangleShape.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RectangleShape.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(View.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(View.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderTarget.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RenderTarget.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderWindow.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RenderWindow.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderStates.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RenderStates.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Transform.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Transform.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Texture.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Texture.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(BlendMode.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(BlendMode.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Shader.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Shader.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(VertexBuffer.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(VertexBuffer.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(GLExtensions.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(GLExtensions.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(GLCheck.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(GLCheck.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(GLLoader.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(GLLoader.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderTextureImplFBO.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RenderTextureImplFBO.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Image.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Image.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(TextureSaver.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(TextureSaver.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(Glsl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(Glsl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderTextureImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(RenderTextureImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-graphics-s-d.lib(ImageLoader.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-graphics-s-d.lib(ImageLoader.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Mouse.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Mouse.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(VideoMode.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(VideoMode.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Window.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Window.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Keyboard.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Keyboard.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Context.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Context.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(GlResource.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(GlResource.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(InputImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(InputImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(VideoModeImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(VideoModeImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Cursor.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Cursor.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(GlContext.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(GlContext.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(WindowImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(WindowImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(CursorImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(CursorImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(WglContext.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(WglContext.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(JoystickManager.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(JoystickManager.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(SensorManager.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(SensorManager.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(WindowImplWin32.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(WindowImplWin32.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(WglExtensions.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(WglExtensions.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(Joystick.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(Joystick.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(JoystickImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(JoystickImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-window-s-d.lib(SensorImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-window-s-d.lib(SensorImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Time.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Time.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Sleep.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Sleep.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(String.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(String.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Mutex.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Mutex.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Lock.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Lock.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Err.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Err.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Clock.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Clock.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(ThreadLocal.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(ThreadLocal.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(SleepImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(SleepImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(MutexImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(MutexImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(ClockImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(ClockImpl.cpp.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj)' or at ''; linking object as if no debug info
+  SetPlot.vcxproj -> C:\c\particle life 2\x64\Debug\sfml base.exe
