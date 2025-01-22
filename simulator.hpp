@@ -205,7 +205,7 @@ public:
 
 
 	void simulate_threaded() {
-		start_buildQTree_thread();
+		//start_buildQTree_thread();
 		//nlogn_ParticleForce(stableTree);
 		start_nlognParticleForce_thread();
 
@@ -220,7 +220,22 @@ public:
 		while (run) {
 			if (go) {
 				go = false;
-				nlogn_ParticleForce(stableTree);
+
+				Integrator::qTree tree = Integrator::qTree(
+					-1, { 0, 0 }, SECONDARY_FORCE_END
+				);
+
+				float good = 0;
+				forcount(objectCount)
+					if (tree.addObj(&objects[i]))
+						good++;
+
+				print(good / objectCount);
+					
+
+				nlogn_ParticleForce(tree);
+
+				renderEngine.tree = tree;
 			}
 			else {
 				// todo

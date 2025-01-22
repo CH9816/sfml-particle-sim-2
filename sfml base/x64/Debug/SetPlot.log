@@ -98,19 +98,22 @@ C:\c\particle life 2\simulator.hpp(162,26): warning C4244: 'argument': conversio
 C:\c\particle life 2\simulator.hpp(166,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(274,23): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(229,5): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(302,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(283,23): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(312,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(317,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(396,21): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(327,21): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
-C:\c\particle life 2\simulator.hpp(418,22): warning C4018: '<': signed/unsigned mismatch
+C:\c\particle life 2\simulator.hpp(411,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'main.cpp')
+  
+C:\c\particle life 2\simulator.hpp(433,22): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'main.cpp')
   
 C:\c\particle life 2\main.cpp(38,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
